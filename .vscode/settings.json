@@ -1,4 +1,9 @@
 {
     "editor.formatOnSave": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "files.associations": {
+        "*.xml": "html",
+        "*.svg": "html",
+    }
 }
+
