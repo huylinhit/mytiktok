@@ -9,7 +9,7 @@
     --text-gray-color: #a1a2a7;
     --white-color:rgba(255, 255, 255, 1);
     --aqua-color: rgb(32, 213, 236);
-
+    --gray-color-hover: rgba(22, 24, 35, .03);
     //Default layout
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
@@ -47,28 +47,4 @@ button {
 a[href] {
     text-decoration: none;
     color: var(--black-color);
-}
-
-.s-btn {
-    min-width: 88px;
-    min-height: 28px;
-    font-size: 16px;
-    line-height: 22px;
-    font-weight: 600;
-}
-
-.m-btn {
-    height: 36px;
-    font-weight: 600;
-    font-size: 1.6rem;
-    padding: 6px 8px;
-    min-width: 100px;
-}
-
-.l-btn {
-    min-width: 168px;
-    min-height: 48px;
-    font-size: 18px;
-    line-height: 25px;
-    font-weight: 600;
 }

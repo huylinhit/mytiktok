@@ -14,6 +14,8 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import { Wrapper as PopperWrapper } from '../Popper';
 import AccountItem from '../AccountItem';
+import Button from '../Button';
+import Settings from '../Settings';
 
 const cx = classNames.bind(style);
 
@@ -43,25 +45,12 @@ function Header() {
                     visible={searchResult.length > 0}
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="1" {...attrs}>
-                            <PopperWrapper>
+                            {/* <Settings/> */}
 
+                            <PopperWrapper>
                                 <h4 className={cx('search-title')}>Accounts</h4>
 
-                                <AccountItem/>
-
-                                {/* <h4 className={cx('search-accounts')}>
-                                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                                    <span>Accounts</span>
-                                </h4>
-
-                                <h4 className={cx('search-accounts')}>
-                                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                                    <span>Accounts</span>
-                                </h4> */}
-
-                                {/* {accounts.map((account, index) => {
-                                    return <h4 className={cx('search-accounts')} key={index}>{account}</h4>;
-                                })} */}
+                                <AccountItem />
                             </PopperWrapper>
                         </div>
                     )}
@@ -85,7 +74,7 @@ function Header() {
                 </Tippy>
 
                 <div className={cx('action')}>
-                    <button className={cx('m-btn', 'upload-btn')}>
+                    {/* <button className={cx('m-btn', 'upload-btn')}>
                         <FontAwesomeIcon icon={faPlus} />
                         <span className={cx('upload-text')}>Upload</span>
                     </button>
@@ -93,7 +82,19 @@ function Header() {
 
                     <button className={cx('settings-btn')}>
                         <FontAwesomeIcon icon={faEllipsisVertical} />
-                    </button>
+                    </button> */}
+
+                    <Button medium uploadBtn leftIcon={<FontAwesomeIcon className={cx('upload-icon')} icon={faPlus} />}>
+                        <span>Upload</span>
+                    </Button>
+
+                    <Button medium loginBtn>
+                        <span>Log in</span>
+                    </Button>
+
+                    <Button settingBtn>
+                        <FontAwesomeIcon icon={faEllipsisVertical} />
+                    </Button>
                 </div>
             </div>
         </div>
