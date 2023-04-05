@@ -13,6 +13,7 @@ import React, { useEffect, useState } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import { Wrapper as PopperWrapper } from '../Popper';
+import AccountItem from '../AccountItem';
 
 const cx = classNames.bind(style);
 
@@ -21,10 +22,14 @@ console.log(images.logo);
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
 
+    const [accounts, setAccounts] = useState([]);
+
     useEffect(() => {
         setTimeout(() => {
             setSearchResult((prev) => [...prev, 3]);
         }, 3000);
+
+        setAccounts((prev) => ['Hello', 'Xin chao']);
     }, []);
 
     return (
@@ -34,10 +39,30 @@ function Header() {
                     <img src={images.logo} alt="tiktok" />
                 </div>
                 <Tippy
+                    interactive={true}
                     visible={searchResult.length > 0}
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="1" {...attrs}>
-                            <PopperWrapper>Ket qua here</PopperWrapper>
+                            <PopperWrapper>
+
+                                <h4 className={cx('search-title')}>Accounts</h4>
+
+                                <AccountItem/>
+
+                                {/* <h4 className={cx('search-accounts')}>
+                                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                                    <span>Accounts</span>
+                                </h4>
+
+                                <h4 className={cx('search-accounts')}>
+                                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                                    <span>Accounts</span>
+                                </h4> */}
+
+                                {/* {accounts.map((account, index) => {
+                                    return <h4 className={cx('search-accounts')} key={index}>{account}</h4>;
+                                })} */}
+                            </PopperWrapper>
                         </div>
                     )}
                 >
