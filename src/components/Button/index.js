@@ -25,9 +25,6 @@ function Button({
 }) {
     let Comp = 'button';
 
-    console.log(leftIcon);
-
-
     const props = {
         onClick,
         ...passProps,
@@ -40,7 +37,6 @@ function Button({
         props.href = href;
         Comp = 'a';
     }
-
     const classes = cx('wrapper', {
         disabled,
         medium,
@@ -50,13 +46,15 @@ function Button({
         loginBtn,
         settingBtn,
         rounded,
+        to,
+        href
     });
 
     return (
         <Comp className={classes} {...props}>
-            {leftIcon && <span>{leftIcon}</span>}
+            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
             {children}
-            {rightIcon && <span>{rightIcon}</span>}
+            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
         </Comp>
     );
 }

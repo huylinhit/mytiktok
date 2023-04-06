@@ -8,18 +8,44 @@ import {
     faSpinner,
     faPlus,
     faEllipsisVertical,
+    faKeyboard,
+    faLanguage,
 } from '@fortawesome/free-solid-svg-icons';
+
+import { faCircleQuestion, faMoon } from '@fortawesome/free-regular-svg-icons';
+
 import React, { useEffect, useState } from 'react';
-import Tippy from '@tippyjs/react';
+import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
 import { Wrapper as PopperWrapper } from '../Popper';
 import AccountItem from '../AccountItem';
 import Button from '../Button';
 import Settings from '../Settings';
+import ActionItem from '../Popper/Menu/ActionMenuItems';
+import Menu from '../Popper/Menu';
 
 const cx = classNames.bind(style);
 
-console.log(images.logo);
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faLanguage} />,
+        title: 'English',
+        to: '/f8',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        href: 'https://fullstack.edu.vn/',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcuts',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faMoon} />,
+        title: 'Dark Mode',
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
@@ -27,11 +53,9 @@ function Header() {
     const [accounts, setAccounts] = useState([]);
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult((prev) => [...prev, 3]);
-        }, 3000);
-
-        setAccounts((prev) => ['Hello', 'Xin chao']);
+        // setTimeout(() => {
+        //     setSearchResult((prev) => [...prev, 3]);
+        // }, 3000);
     }, []);
 
     return (
@@ -45,8 +69,6 @@ function Header() {
                     visible={searchResult.length > 0}
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="1" {...attrs}>
-                            {/* <Settings/> */}
-
                             <PopperWrapper>
                                 <h4 className={cx('search-title')}>Accounts</h4>
 
@@ -74,16 +96,6 @@ function Header() {
                 </Tippy>
 
                 <div className={cx('action')}>
-                    {/* <button className={cx('m-btn', 'upload-btn')}>
-                        <FontAwesomeIcon icon={faPlus} />
-                        <span className={cx('upload-text')}>Upload</span>
-                    </button>
-                    <button className={cx('m-btn', 'login-btn')}>Log in</button>
-
-                    <button className={cx('settings-btn')}>
-                        <FontAwesomeIcon icon={faEllipsisVertical} />
-                    </button> */}
-
                     <Button medium uploadBtn leftIcon={<FontAwesomeIcon className={cx('upload-icon')} icon={faPlus} />}>
                         <span>Upload</span>
                     </Button>
@@ -92,9 +104,11 @@ function Header() {
                         <span>Log in</span>
                     </Button>
 
-                    <Button settingBtn>
-                        <FontAwesomeIcon icon={faEllipsisVertical} />
-                    </Button>
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx('settingBtn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </div>

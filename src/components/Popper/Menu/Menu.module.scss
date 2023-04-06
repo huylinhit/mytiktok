@@ -1,0 +1,44 @@
+.action-menu-list {
+    width: 223px;
+    border-radius: none;
+    font-size: 1.4rem;
+    color: black;
+
+    .action-menu-list-wrapper {
+        padding: 8px 0;
+        border-radius: 4px;
+    }
+}
+
+.settingBtn {
+    background-color: var(--white-color);
+    font-size: 2rem;
+    width: 4px;
+    margin-left: 20px;
+    margin-right: 4px;
+    height: 32px;
+}
+
+.action-menu-item {
+    width: 100%;
+    padding: 10px 0;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: flex;
+    align-items: center;
+    color: var(--black-color);
+    background-color: var(--white-color);
+    font-size: 1.6rem;
+
+    &:hover {
+        background-color: var(--gray-color-hover);
+        cursor: pointer;
+    }
+}
+
+.icon-items {
+    border: 1px solid blue;
+    font-size: 2.4rem;
+    width: 20px;
+    margin-right: 8px;
+}

@@ -16,6 +16,15 @@
     }
 }
 
+.icon{
+    font-size: 1.6rem;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    text-align: center;
+    margin: 0 8px;
+}
+
 .rounded{
     font-weight: 700;
     font-size: 14px;
@@ -51,7 +60,6 @@
 
 .uploadBtn{
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
     border: 1px solid var(--bold-gray-color);
     background-color: var(--white-color);
@@ -71,13 +79,5 @@
     &:hover{
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),#FE2C55;
     }
-}
-
-.settingBtn{
-    background-color: var(--white-color);
-    font-size: 2rem;
-    width: 4px;
-    margin-left: 20px;
-    margin-right: 4px;
 }
 
