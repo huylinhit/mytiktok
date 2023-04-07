@@ -7,6 +7,7 @@
     .action-menu-list-wrapper {
         padding: 8px 0;
         border-radius: 4px;
+        line-height: 1.4rem;
     }
 }
 
@@ -19,7 +20,8 @@
     height: 32px;
 }
 
-.action-menu-item {
+.action-menu-items {
+    line-height: 1.4rem;
     width: 100%;
     padding: 10px 0;
     padding-left: 8px;
@@ -36,9 +38,33 @@
     }
 }
 
-.icon-items {
-    border: 1px solid blue;
-    font-size: 2.4rem;
-    width: 20px;
-    margin-right: 8px;
+
+//Language Menu
+.language-menu {
+    color: black;
+}
+
+.language-menu-header {
+    color: black;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    font-size: 1.6rem;
+
+    span {
+        cursor: default;
+    }
+}
+
+.back-icon {
+    width: 68px;
+    height: 15px;
+    background-color: var(--white-color);
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.button-content{
+    margin-left: 16px;
 }

@@ -23,6 +23,7 @@ import Button from '../Button';
 import Settings from '../Settings';
 import ActionItem from '../Popper/Menu/ActionMenuItems';
 import Menu from '../Popper/Menu';
+import LanguageMenu from '../Popper/Menu/LanguageHeaderMenu';
 
 const cx = classNames.bind(style);
 
@@ -30,7 +31,19 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faLanguage} />,
         title: 'English',
-        to: '/f8',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Vietnamese',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
