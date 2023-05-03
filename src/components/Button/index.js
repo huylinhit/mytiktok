@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const cx = classNames.bind(styles);
 
-
 function Button({
     to,
     href,
@@ -21,6 +20,7 @@ function Button({
     rightIcon,
     children,
     onClick,
+    classNameIcon,
     ...passProps
 }) {
     let Comp = 'button';
@@ -52,9 +52,9 @@ function Button({
 
     return (
         <Comp className={classes} {...props}>
-            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+            {leftIcon && <span className={cx('icon',classNameIcon)}>{leftIcon}</span>}
             <span className={cx('button-content')}>{children}</span>
-            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
+            {rightIcon && <span className={cx('icon',classNameIcon)}>{rightIcon}</span>}
         </Comp>
     );
 }

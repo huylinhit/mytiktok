@@ -4,6 +4,10 @@
     font-size: 1.4rem;
     color: black;
 
+    .separate {
+        border-top: 1px solid var(--bold-gray-color);
+    }
+
     .action-menu-list-wrapper {
         padding: 8px 0;
         border-radius: 4px;
@@ -31,13 +35,17 @@
     color: var(--black-color);
     background-color: var(--white-color);
     font-size: 1.6rem;
+    font-weight: 600;
 
+    .action-menu-icons{
+        font-size: 1.8rem;
+    }
+    
     &:hover {
         background-color: var(--gray-color-hover);
-        cursor: pointer;
+        cursor: default;
     }
 }
-
 
 //Language Menu
 .language-menu {
@@ -50,6 +58,7 @@
     align-items: center;
     height: 50px;
     font-size: 1.6rem;
+    font-weight: 600;
 
     span {
         cursor: default;
@@ -65,6 +74,6 @@
     }
 }
 
-.button-content{
+.button-content {
     margin-left: 16px;
 }

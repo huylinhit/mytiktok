@@ -1,31 +1,29 @@
-import classNames from 'classnames/bind';
-import style from './Header.module.scss';
+
+
 import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faMagnifyingGlass,
-    faCircleXmark,
-    faSpinner,
     faPlus,
     faEllipsisVertical,
     faKeyboard,
     faLanguage,
+    faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { faCircleQuestion, faMoon } from '@fortawesome/free-regular-svg-icons';
-
-import React, { useEffect, useState } from 'react';
-import Tippy from '@tippyjs/react/headless';
+import SearchHeader from '../SearchHeader';
+import { faCircleQuestion, faMoon, faUser, faSun } from '@fortawesome/free-regular-svg-icons';
+import React from 'react';
+import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
-import { Wrapper as PopperWrapper } from '../Popper';
-import AccountItem from '../AccountItem';
 import Button from '../Button';
-import Settings from '../Settings';
-import ActionItem from '../Popper/Menu/ActionMenuItems';
 import Menu from '../Popper/Menu';
-import LanguageMenu from '../Popper/Menu/LanguageHeaderMenu';
+import { faTiktok } from '@fortawesome/free-brands-svg-icons';
+import { MessagesIcon, InboxIcon } from '../Icons';
 
-const cx = classNames.bind(style);
+
+import styles from './Header.module.scss';
+import classNames from 'classnames/bind';
+const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
@@ -60,16 +58,29 @@ const MENU_ITEMS = [
     },
 ];
 
+const ACCOUNT_MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'View profile',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faTiktok} />,
+        title: 'Get Coins',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faSun} />,
+        title: 'Settings',
+    },
+    ...MENU_ITEMS,
+    {
+        icon: <FontAwesomeIcon icon={faRightFromBracket} />,
+        title: 'Log out',
+        separate: true,
+    },
+];
+
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-
-    const [accounts, setAccounts] = useState([]);
-
-    useEffect(() => {
-        // setTimeout(() => {
-        //     setSearchResult((prev) => [...prev, 3]);
-        // }, 3000);
-    }, []);
+    const isUser = true;
 
     return (
         <div className={cx('wrapper')}>
@@ -77,51 +88,46 @@ function Header() {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="tiktok" />
                 </div>
-                <Tippy
-                    interactive={true}
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
-
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input
-                            className={cx('search-content')}
-                            placeholder="Search accounts and videos"
-                            spellCheck="false"
-                        />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </Tippy>
+                
+                <SearchHeader />
 
                 <div className={cx('action')}>
                     <Button medium uploadBtn leftIcon={<FontAwesomeIcon className={cx('upload-icon')} icon={faPlus} />}>
                         <span>Upload</span>
                     </Button>
 
-                    <Button medium loginBtn>
-                        <span>Log in</span>
-                    </Button>
+                    {isUser ? (
+                        <>
+                            <Tippy content="Messages" placement="bottom">
+                                <button className={cx('user-buttons')}>
+                                    <MessagesIcon width="2.6rem" height="2.6rem" />
+                                </button>
+                            </Tippy>
 
-                    <Menu items={MENU_ITEMS}>
-                        <button className={cx('settingBtn')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
-                    </Menu>
+                            <Tippy content="Inbox" placement="bottom">
+                                <button className={cx('user-buttons')}>
+                                    <InboxIcon width="3.2rem" height="3.2rem" />
+                                </button>
+                            </Tippy>
+
+                            <Menu items={ACCOUNT_MENU_ITEMS}>
+                                <button className={cx('user-buttons', 'userAvatar')}>
+                                    <img src={images.logo} className={cx('userAvatar')} />
+                                </button>
+                            </Menu>
+                        </>
+                    ) : (
+                        <>
+                            <Button medium loginBtn>
+                                <span>Log in</span>
+                            </Button>
+                            <Menu items={MENU_ITEMS}>
+                                <button className={cx('settingBtn')}>
+                                    <FontAwesomeIcon icon={faEllipsisVertical} />
+                                </button>
+                            </Menu>
+                        </>
+                    )}
                 </div>
             </div>
         </div>

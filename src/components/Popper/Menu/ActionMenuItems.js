@@ -5,12 +5,14 @@ import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-function ActionMenuItem({ children, item, onClick }) {
+function ActionMenuItem({ children, item, className, onClick }) {
+    
     return (
         <Button
             onClick={onClick}
             leftIcon={item.icon}
-            className={cx('action-menu-items')}
+            className={cx('action-menu-items', className)}
+            classNameIcon={cx('action-menu-icons')}
             to={item.to}
             href={item.href}
         >

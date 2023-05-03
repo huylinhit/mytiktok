@@ -13,11 +13,12 @@ const cx = classNames.bind(styles);
 function Menu({ children, items = [] }) {
     const [history, setHistory] = useState([{ data: items }]);
 
+
+
     const current = history[history.length - 1];
     const data = current.data;
 
-    //sua ten handleClick
-    const handleClick = (childrenObject) => {
+    const handlePageLanguage = (childrenObject) => {
         const data = childrenObject;
 
         setHistory((prev) => [...prev, data]);
@@ -33,8 +34,9 @@ function Menu({ children, items = [] }) {
 
             return (
                 <ActionMenuItems
+                    className={item.separate && cx('separate')}
                     onClick={() => {
-                        isParent && handleClick(item.children);
+                        isParent && handlePageLanguage(item.children);
                     }}
                     key={index}
                     item={item}
@@ -47,6 +49,9 @@ function Menu({ children, items = [] }) {
         <Tippy
             interactive={true}
             delay={[0, 500]}
+            onHide={() =>{
+                setHistory([{data: items}]);
+            }}
             placement="bottom"
             render={(attrs) => (
                 <div className={cx('action-menu-list')} tabIndex="-1" {...attrs}>

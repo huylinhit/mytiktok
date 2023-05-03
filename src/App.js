@@ -1,8 +1,7 @@
 import { Fragment } from 'react';
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from '~/routes';
-import { DefaultLayout } from '~/components/Layouts';
+import { DefaultLayout, ProfileLayout } from '~/components/Layouts';
 import { HeaderOnly } from '~/components/Layouts';
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
                             Layout = HeaderOnly;
                         } else if (route.layout === null){
                             Layout = Fragment;
-                        }
+                        } 
 
                         const Page = route.component;
                         return (
