@@ -1,5 +1,3 @@
-
-
 import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -13,6 +11,7 @@ import {
 import SearchHeader from '../SearchHeader';
 import { faCircleQuestion, faMoon, faUser, faSun } from '@fortawesome/free-regular-svg-icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import Button from '../Button';
@@ -20,6 +19,7 @@ import Menu from '../Popper/Menu';
 import { faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { MessagesIcon, InboxIcon } from '../Icons';
 
+import PropTypes from 'prop-types';
 
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
@@ -39,7 +39,7 @@ const MENU_ITEMS = [
                 {
                     code: 'vi',
                     title: 'Vietnamese',
-                },
+                }
             ],
         },
     },
@@ -85,11 +85,13 @@ function Header() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to="/" className={cx('logo')}>
                     <img src={images.logo} alt="tiktok" />
-                </div>
+                </Link>
                 
                 <SearchHeader />
+
+                <Button>{true}</Button>
 
                 <div className={cx('action')}>
                     <Button medium uploadBtn leftIcon={<FontAwesomeIcon className={cx('upload-icon')} icon={faPlus} />}>
@@ -132,6 +134,10 @@ function Header() {
             </div>
         </div>
     );
+}
+
+Button.propTypes = {
+    optionalArray: PropTypes.string
 }
 
 export default Header;

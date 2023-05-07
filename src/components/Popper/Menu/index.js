@@ -13,14 +13,11 @@ const cx = classNames.bind(styles);
 function Menu({ children, items = [] }) {
     const [history, setHistory] = useState([{ data: items }]);
 
-
-
     const current = history[history.length - 1];
     const data = current.data;
 
     const handlePageLanguage = (childrenObject) => {
         const data = childrenObject;
-
         setHistory((prev) => [...prev, data]);
     };
 
@@ -31,7 +28,6 @@ function Menu({ children, items = [] }) {
     const renderMenuItems = () => {
         return data.map((item, index) => {
             const isParent = !!item.children;
-
             return (
                 <ActionMenuItems
                     className={item.separate && cx('separate')}
@@ -47,18 +43,20 @@ function Menu({ children, items = [] }) {
 
     return (
         <Tippy
+            hideOnClick={false}
             interactive={true}
             delay={[0, 500]}
             onHide={() =>{
                 setHistory([{data: items}]);
             }}
             placement="bottom"
+            arrow={true}
             render={(attrs) => (
                 <div className={cx('action-menu-list')} tabIndex="-1" {...attrs}>
                     <PopperWrapper className={cx('action-menu-list-wrapper')}>
                         {history.length > 1 && <LanguageHeaderMenu onBack={onBack} title={current.title} />}
 
-                        {renderMenuItems()}
+                        <div className={cx('menu-scroll')}>{renderMenuItems()}</div>
                     </PopperWrapper>
                 </div>
             )}

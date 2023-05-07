@@ -7,7 +7,7 @@ import styles from './SearchHeader.module.scss';
 import classNames from 'classnames/bind';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import useDebounce from '~/hooks/useDebounce';
-import * as searchService from '~/apiServices/search';
+import * as searchService from '~/services/search';
 
 const cx = classNames.bind(styles);
 
@@ -22,6 +22,11 @@ function SearchHeader() {
 
     const searchChange = (e) => {
         const value = e.target.value;
+
+        if(value.charAt(0) === " "){
+            return;
+        }
+
         const isHaveValue = !!value;
         setSearch(value);
         if (isHaveValue) {
@@ -55,47 +60,49 @@ function SearchHeader() {
 
     }, [debounced]);
     return (
-        <HeadlessTippy
-            onClickOutside={() => setIsShow(false)}
-            interactive={true}
-            visible={isShow && searchResult.length > 0}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
-
-                        {searchResult.map((item) => {
-                            return <AccountItem key={item.id} data={item} />;
-                        })}
-                    </PopperWrapper>
-                </div>
-            )}
-        >
-            <div className={cx('search')}>
-                <input
-                    onFocus={() => setIsShow(true)}
-                    ref={searchInputElement}
-                    value={search}
-                    onChange={(e) => {
-                        searchChange(e);
-                    }}
-                    className={cx('search-content')}
-                    placeholder="Search accounts and videos"
-                    spellCheck="false"
-                />
-
-                {isSearch && !isLoading && (
-                    <button onClick={() => clearSearch()} className={cx('clear')}>
-                        <FontAwesomeIcon icon={faCircleXmark} />
-                    </button>
+        <div>
+            <HeadlessTippy
+                onClickOutside={() => setIsShow(false)}
+                interactive={true}
+                visible={isShow && searchResult.length > 0}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
+    
+                            {searchResult.map((item) => {
+                                return <AccountItem key={item.id} data={item} />;
+                            })}
+                        </PopperWrapper>
+                    </div>
                 )}
-
-                {isLoading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-                <button className={cx('search-btn')}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
-            </div>
-        </HeadlessTippy>
+            >
+                <div className={cx('search')}>
+                    <input
+                        onFocus={() => setIsShow(true)}
+                        ref={searchInputElement}
+                        value={search}
+                        onChange={(e) => {
+                            searchChange(e);
+                        }}
+                        className={cx('search-content')}
+                        placeholder="Search"
+                        spellCheck="false"
+                    />
+    
+                    {isSearch && !isLoading && (
+                        <button onClick={() => clearSearch()} className={cx('clear')}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                    )}
+    
+                    {isLoading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
+                    <button className={cx('search-btn')}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
     );
 }
 
