@@ -23,11 +23,11 @@ function ActionMenuItem({ children, item, className, onClick }) {
     );
 }
 
-AccountItem.propTypes = {
+ActionMenuItem.propTypes = {
     children: PropTypes.node,
     item: PropTypes.object.isRequired,
     className: PropTypes.string,
-    onClick: PropTypes.node
+    onClick: PropTypes.func
 }
 
 export default ActionMenuItem;

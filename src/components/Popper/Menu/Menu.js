@@ -69,7 +69,7 @@ function Menu({ children, items = [] }) {
 
 Menu.propTypes = {
     children: PropTypes.node.isRequired,
-    item : PropTypes.array.isRequired
+    item : PropTypes.array
 }
 
 export default Menu;

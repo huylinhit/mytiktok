@@ -57,7 +57,6 @@ function SearchHeader() {
             setIsLoading(false);
         };
         fetchAPI();
-
     }, [debounced]);
     return (
         <div>

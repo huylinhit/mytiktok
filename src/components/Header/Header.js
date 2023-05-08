@@ -90,9 +90,7 @@ function Header() {
                 </Link>
                 
                 <SearchHeader />
-
-                <Button>{true}</Button>
-
+                
                 <div className={cx('action')}>
                     <Button medium uploadBtn leftIcon={<FontAwesomeIcon className={cx('upload-icon')} icon={faPlus} />}>
                         <span>Upload</span>
