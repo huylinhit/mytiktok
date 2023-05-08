@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 
@@ -26,5 +27,7 @@ function AccountItem({ data }) {
         </Link>
     );
 }
-
+AccountItem.propTypes = {
+    data: PropTypes.object.isRequired
+}
 export default AccountItem;

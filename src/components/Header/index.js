@@ -136,8 +136,4 @@ function Header() {
     );
 }
 
-Button.propTypes = {
-    optionalArray: PropTypes.string
-}
-
 export default Header;

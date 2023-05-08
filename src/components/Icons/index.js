@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types'; 
+
+
 const MessagesIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => {
     return (
         <svg

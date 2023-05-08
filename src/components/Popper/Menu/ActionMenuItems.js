@@ -2,6 +2,8 @@ import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '~/components/Button';
+import PropTypes from 'prop-types';
+import AccountItem from '~/components/AccountItem';
 
 const cx = classNames.bind(styles);
 
@@ -19,6 +21,13 @@ function ActionMenuItem({ children, item, className, onClick }) {
             <span className={cx('button-content')}>{item.title}</span>
         </Button>
     );
+}
+
+AccountItem.propTypes = {
+    children: PropTypes.node,
+    item: PropTypes.object.isRequired,
+    className: PropTypes.string,
+    onClick: PropTypes.node
 }
 
 export default ActionMenuItem;

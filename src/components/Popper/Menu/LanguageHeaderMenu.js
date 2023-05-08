@@ -3,6 +3,7 @@ import styles from './Menu.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'tippy.js/dist/tippy.css'; // optional
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 
@@ -16,5 +17,11 @@ function LanguageHeaderMenu({ title, onBack }) {
         </header>
     );
 }
+
+LanguageHeaderMenu.propTypes = {
+    title: PropTypes.string.isRequired,
+    onBack: PropTypes.func.isRequired
+}
+
 
 export default LanguageHeaderMenu;
