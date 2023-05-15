@@ -27,7 +27,9 @@ function AccountItem({ data }) {
         </Link>
     );
 }
+
 AccountItem.propTypes = {
     data: PropTypes.object.isRequired
 }
+
 export default AccountItem;
